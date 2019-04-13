@@ -23,7 +23,7 @@
       <img class="user-avatar mat-elevation-z2" src="{{ user.image || './../../../assets/images/man.png' }}" />
     </div>
 
-    <ng-template>
+    <ng-template #buttonCorner>
       <a mat-button (click)="showSignIn()" i18n="@@signInButtonText">Sign In</a>
       <a mat-raised-button color="primary" (click)="showSignUp()"
         ><span class="white-text" i18n="@@signUpButtonText">Sign Up</span></a

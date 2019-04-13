@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./nav.component.scss']
 })
 export class NavComponent implements OnInit {
-  ToDoUser: boolean = false;
+  ToDoUser: any = null;
 
   constructor(private router: Router) {}
 
