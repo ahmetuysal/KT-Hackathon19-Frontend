@@ -1,0 +1,75 @@
+<h1 mat-dialog-title>Sign Up</h1>
+
+<div mat-dialog-content>
+  <div class="content" *ngIf="!waiting; else signUp">
+    <mat-form-field hideRequiredMarker="true">
+      <input matInput placeholder="Name" [formControl]="name" type="text" cdkFocusInitial required />
+      <mat-error *ngIf="name.invalid">{{ getErrorMessageName() }}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field hideRequiredMarker="true">
+      <input matInput placeholder="Surname" [formControl]="surname" type="text" required />
+      <mat-error *ngIf="surname.invalid">{{ getErrorMessageSurname() }}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field hideRequiredMarker="true">
+      <input matInput placeholder="Username" [formControl]="userName" type="text" required />
+      <mat-icon
+        *ngIf="userNameTaken"
+        matSuffix
+        class="error"
+        matTooltip="This username is already taken."
+        matTooltipPosition="after"
+        >error</mat-icon
+      >
+      <mat-icon
+        *ngIf="userNameAvailable && userName.valid"
+        matSuffix
+        class="success"
+        matTooltip="This username is available."
+        matTooltipPosition="after"
+        >done</mat-icon
+      >
+      <mat-error *ngIf="userName.invalid">{{ getErrorMessageUserName() }}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Email" [formControl]="email" type="email" />
+      <mat-error *ngIf="email.invalid">{{ getErrorMessageEmail() }}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Password" [formControl]="password" type="password" />
+      <mat-error *ngIf="password.invalid">{{ getErrorMessagePassword() }}</mat-error>
+    </mat-form-field>
+
+    <mat-error *ngIf="errorMessage">{{ errorMessage }}</mat-error>
+    <!-- removed since it was causing vertical scrollbar due to a bug in library -->
+    <!--<mat-checkbox color="primary">Keep me signed in</mat-checkbox>-->
+  </div>
+</div>
+
+<ng-template #signUp>
+  <h6>Signing Up</h6>
+  <mat-progress-bar *ngIf="waiting" mode="indeterminate">Signing Up</mat-progress-bar>
+</ng-template>
+
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button
+    type="submit"
+    mat-button
+    [disabled]="
+      name.invalid ||
+      surname.invalid ||
+      password.invalid ||
+      email.invalid ||
+      userName.invalid ||
+      waiting ||
+      userNameTaken
+    "
+    (click)="onSubmit()"
+  >
+    Sign Up
+  </button>
+</mat-dialog-actions>

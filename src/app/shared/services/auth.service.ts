@@ -59,7 +59,7 @@ export class AuthService {
   }
 
   async updateCurrentUserUsingToken(token: string): Promise<void> {
-    const result = await this.apiService.get('users').toPromise();
+    const result = await this.apiService.get('account').toPromise();
     console.log(result);
     if (result.user) {
       const user = result.user;
@@ -86,7 +86,7 @@ export class AuthService {
   }
 
   async checkUserNameAvailability(checkUsernameRequest: CheckUsernameRequest): Promise<boolean> {
-    const result = await this.apiService.post('users/check-username/', checkUsernameRequest).toPromise();
+    const result = await this.apiService.post('account/check-username/', checkUsernameRequest).toPromise();
     if (result.isUserNameAvailable) {
       return true;
     } else {

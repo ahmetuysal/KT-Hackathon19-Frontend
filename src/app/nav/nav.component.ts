@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Router } from '@angular/router';
+import { AuthService } from '../shared/services/auth.service';
+import { DialogService } from '../shared/services/dialog.service';
 
 @Component({
   selector: 'app-nav',
@@ -8,22 +10,20 @@ import { Router } from '@angular/router';
   styleUrls: ['./nav.component.scss']
 })
 export class NavComponent implements OnInit {
-  ToDoUser: any = null;
-
-  constructor(private router: Router) {}
+  constructor(public authService: AuthService, private dialogService: DialogService, private router: Router) {}
 
   ngOnInit() {}
 
   showSignIn(): void {
-    // TODO: Prompt SignIn
+    this.dialogService.showSignIn();
   }
 
   showSignUp(): void {
-    // TODO: Prompt SignUp
+    this.dialogService.showSignUp();
   }
 
   signOut(): void {
-    // TODO: signOut
+    this.authService.signOut();
     this.router.navigate(['/']);
   }
 }

@@ -19,7 +19,7 @@
     <!-- This fills the remaining space of the current row -->
     <span class="spacer"></span>
 
-    <div *ngIf="ToDoUser as user; else buttonCorner">
+    <div *ngIf="(authService.currentUser$ | async) as user; else buttonCorner">
       <img class="user-avatar mat-elevation-z2" src="{{ user.image || './../../../assets/images/man.png' }}" />
     </div>
 

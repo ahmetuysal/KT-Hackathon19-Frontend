@@ -1,0 +1,31 @@
+<h1 mat-dialog-title>Sign In</h1>
+
+<div mat-dialog-content>
+  <div class="content" *ngIf="!waiting; else signIn">
+    <mat-form-field hideRequiredMarker="true">
+      <input matInput placeholder="Username" [formControl]="userName" type="text" cdkFocusInitial required />
+      <mat-error *ngIf="userName.invalid">{{ getErrorMessageUserName() }}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field hideRequiredMarker="true">
+      <input matInput placeholder="Password" [formControl]="password" type="password" required />
+      <mat-error *ngIf="password.invalid">{{ getErrorMessagePassword() }}</mat-error>
+    </mat-form-field>
+
+    <mat-error *ngIf="errorMessage">{{ errorMessage }}</mat-error>
+    <!-- removed since it was causing vertical scrollbar due to a bug in library -->
+    <!--<mat-checkbox color="primary">Keep me signed in</mat-checkbox>-->
+  </div>
+
+  <ng-template #signIn>
+    <h6>Signing In</h6>
+    <mat-progress-bar *ngIf="waiting" mode="indeterminate">Signing In</mat-progress-bar>
+  </ng-template>
+</div>
+
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button type="submit" mat-button [disabled]="password.invalid || userName.invalid || waiting" (click)="onSubmit()">
+    Sign In
+  </button>
+</mat-dialog-actions>
