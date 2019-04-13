@@ -16,6 +16,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material';
+import { MatCardModule } from '@angular/material/card';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -25,13 +28,23 @@ import { HomeComponent } from './home/home.component';
 import { LoginDialogComponent } from './login-dialog/login-dialog.component';
 import { SignupDialogComponent } from './signup-dialog/signup-dialog.component';
 import { AuthService } from './shared/services/auth.service';
+import { CreateFundraisingComponent } from './create-fundraising/create-fundraising.component';
+import { CreateEquityFundingComponent } from './create-equity-funding/create-equity-funding.component';
 
 export function init_auth(authService: AuthService) {
   return () => authService.populate();
 }
 
 @NgModule({
-  declarations: [AppComponent, NavComponent, HomeComponent, LoginDialogComponent, SignupDialogComponent],
+  declarations: [
+    AppComponent,
+    NavComponent,
+    HomeComponent,
+    LoginDialogComponent,
+    SignupDialogComponent,
+    CreateFundraisingComponent,
+    CreateEquityFundingComponent
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -45,6 +58,9 @@ export function init_auth(authService: AuthService) {
     MatInputModule,
     MatProgressBarModule,
     MatSnackBarModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatCardModule,
     ReactiveFormsModule,
     HttpClientModule,
     AngularFireModule.initializeApp(environment.firebase),
