@@ -1,0 +1,69 @@
+$baykuslar-primary-colors: (
+  50: #ffeee0,
+  100: #ffd5b3,
+  200: #ffb980,
+  300: #ff9c4d,
+  400: #ff8726,
+  500: #ff7200,
+  600: #ff6a00,
+  700: #ff5f00,
+  800: #ff5500,
+  900: #ff4200,
+  A100: #ffffff,
+  A200: #fff5f2,
+  A400: #ffccbf,
+  A700: #ffb7a6,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #000000,
+    500: #000000,
+    600: #000000,
+    700: #000000,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #000000
+  )
+);
+
+$baykuslar-primary: mat-palette($baykuslar-primary-colors);
+
+$baykuslar-accent-colors: (
+  50: #e8f0fe,
+  100: #c6dafc,
+  200: #a1c2fa,
+  300: #7baaf7,
+  400: #5e97f6,
+  500: #4285f4,
+  600: #3c7df3,
+  700: #3372f1,
+  800: #2b68ef,
+  900: #1d55ec,
+  A100: #ffffff,
+  A200: #eef2ff,
+  A400: #bbcbff,
+  A700: #a1b8ff,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #000000,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #000000
+  )
+);
+
+$baykuslar-accent: mat-palette($baykuslar-accent-colors);

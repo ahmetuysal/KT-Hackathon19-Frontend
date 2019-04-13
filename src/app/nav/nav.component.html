@@ -1,3 +1,52 @@
-<p>
-  nav works!
-</p>
+<mat-toolbar class="mat-elevation-z8 navbar" role="heading">
+  <mat-toolbar-row>
+    <a mat-button routerLink="/" aria-label="baykuslar logo">
+      <img class="logo" src="../../assets/images/owl.png" alt="baykuslar" />
+    </a>
+
+    <a mat-button class="navbar-hide-small" routerLink="route1" routerLinkActive="active" i18n="@@route1Text">
+      Route1
+    </a>
+
+    <a mat-button class="navbar-hide-small" routerLink="route2" routerLinkActive="active" i18n="@@route2Text">
+      Route2
+    </a>
+
+    <a mat-button class="navbar-hide-small" routerLink="route3" routerLinkActive="active" i18n="@@route3Text">
+      Route3
+    </a>
+
+    <!-- This fills the remaining space of the current row -->
+    <span class="spacer"></span>
+
+    <div *ngIf="ToDoUser as user; else buttonCorner">
+      <img class="user-avatar mat-elevation-z2" src="{{ user.image || './../../../assets/images/man.png' }}" />
+    </div>
+
+    <ng-template>
+      <a mat-button (click)="showSignIn()" i18n="@@signInButtonText">Sign In</a>
+      <a mat-raised-button color="primary" (click)="showSignUp()"
+        ><span class="white-text" i18n="@@signUpButtonText">Sign Up</span></a
+      >
+    </ng-template>
+
+    <a mat-button class="raiseFund-button" routerLink="raise-fund">
+      <mat-icon aria-label="Work icon">add_shopping_cart</mat-icon>
+      <span class="navbar-hide-small" i18n="@@raiseFundText">Raise Fund</span>
+    </a>
+  </mat-toolbar-row>
+
+  <mat-toolbar-row class="navbar-show-small second-row">
+    <a mat-button class="spacer" routerLink="route1" routerLinkActive="active" i18n="@@route1Text">
+      Route1
+    </a>
+
+    <a mat-button class="spacer" routerLink="route2" routerLinkActive="active" i18n="@@route2Text">
+      Route2
+    </a>
+
+    <a mat-button class="spacer" routerLink="route3" routerLinkActive="active" i18n="@@route3Text">
+      Route3
+    </a>
+  </mat-toolbar-row>
+</mat-toolbar>

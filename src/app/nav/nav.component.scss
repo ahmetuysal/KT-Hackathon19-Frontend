@@ -1,0 +1,80 @@
+.navbar {
+  background: #fff;
+}
+
+.active {
+  // TODO: style active router
+}
+
+.white-text {
+  color: #fff;
+}
+
+.user-avatar {
+  display: block;
+  width: auto;
+  max-height: 48px;
+  height: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 50%;
+}
+
+.logo {
+  height: 50px;
+  margin: 0 4px 3px 0;
+  vertical-align: middle;
+}
+.navbar-show-small {
+  display: none;
+}
+
+.raiseFund-button:hover {
+  color: #ff7200;
+}
+
+.raiseFund-button.mat-button {
+  min-width: 32px;
+  padding: 0 4px;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+/**
+    * Rules for when the device is detected to be a small screen.
+    * Moves content two rows instead of one.
+    */
+@media (max-width: 598px) {
+  .navbar-hide-small {
+    display: none;
+  }
+
+  .navbar-show-small {
+    display: flex;
+  }
+}
+
+/**
+    * Changes logo to x_logo.
+    */
+@media (max-width: 380px) {
+  .logo {
+    content: url('../../assets/icons/owl-128x128.png');
+  }
+}
+
+/**
+    * Decreases padding of buttons.
+    */
+@media (max-width: 320px) {
+  .mat-button {
+    min-width: 32px;
+    padding: 0 8px;
+  }
+  .mat-raised-button {
+    min-width: 32px;
+    padding: 0 8px;
+  }
+}
