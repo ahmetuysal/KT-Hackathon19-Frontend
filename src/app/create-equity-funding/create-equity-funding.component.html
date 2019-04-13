@@ -1,33 +1,60 @@
 <mat-card class="example-card">
-  <h1 mat-dialog-title>Equity Funding</h1>
+  <mat-card-header>
+    <mat-card-title i18n="@@equityFundingText">Equity Funding</mat-card-title>
+  </mat-card-header>
 
-  <div class="example-container">
-    <mat-form-field>
-      <input matInput placeholder="Title of the Fund" />
-    </mat-form-field>
+  <div class="container">
+    <div class="top-elements">
+      <div class="input-elements">
+        <mat-form-field>
+          <input matInput placeholder="Title of the Fund" />
+        </mat-form-field>
 
+        <mat-form-field>
+          <input matInput placeholder="Share Price" type="number" class="example-left-align" />
+          <span matPrefix>$&nbsp;</span>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput placeholder="Target Share" type="number" class="example-left-align" />
+          <span matPrefix>$&nbsp;</span>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [matDatepicker]="picker" placeholder="Deadline" />
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div class="cropper-area">
+        <input hidden type="file" #uploader (change)="fileChangeEvent($event)" accept="image/*" />
+        <img
+          *ngIf="!showCropper; else cropperTemplate"
+          src="{{ image || 'https://images-na.ssl-images-amazon.com/images/I/51enUBAnxTL._AC_UL130_.jpg' }}"
+          (click)="uploader.click()"
+        />
+        <ng-template #cropperTemplate>
+          <image-cropper
+            [imageChangedEvent]="imageChangedEvent"
+            [maintainAspectRatio]="true"
+            [aspectRatio]="4 / 3"
+            [resizeToWidth]="640"
+            format="png"
+            (imageCropped)="imageCropped($event)"
+            (imageLoaded)="imageLoaded()"
+            (cropperReady)="cropperReady()"
+            (loadImageFailed)="loadImageFailed()"
+          ></image-cropper>
+          <div class="imageCropButtons">
+            <button mat-raised-button (click)="cancelClicked()">Cancel</button>
+            <button mat-raised-button class="whiteText" color="primary" (click)="doneClicked()">Done</button>
+          </div>
+        </ng-template>
+      </div>
+    </div>
     <mat-form-field>
       <textarea matInput placeholder="Description"></textarea>
     </mat-form-field>
-
-    <mat-form-field>
-      <input matInput placeholder="Image - SONRA DEĞİŞECEK" />
-    </mat-form-field>
-
-    <mat-form-field>
-      <input matInput placeholder="Share Price" type="number" class="example-left-align" />
-      <span matPrefix>$&nbsp;</span>
-    </mat-form-field>
-
-    <mat-form-field>
-      <input matInput placeholder="Target Share" type="number" class="example-left-align" />
-      <span matPrefix>$&nbsp;</span>
-    </mat-form-field>
-
-    <mat-form-field>
-      <input matInput [matDatepicker]="picker" placeholder="Deadline" />
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field>
+    <button mat-raised-button class="whiteText" color="primary" i18n="@@postEquityText">List Your Equity</button>
   </div>
 </mat-card>

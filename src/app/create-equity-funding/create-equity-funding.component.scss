@@ -1,8 +1,55 @@
-.example-container {
+.container {
   display: flex;
   flex-direction: column;
+  padding: 18px;
+  .top-elements {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    .input-elements {
+      display: flex;
+      flex-direction: column;
+      min-width: 220px;
+      width: 45%;
+    }
+    .cropper-area {
+      display: flex;
+      justify-content: center;
+      min-width: 280px;
+      width: 45%;
+      margin: auto;
+      image-cropper {
+        flex-grow: 1;
+      }
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+    }
+  }
 }
 
-.example-container > * {
-  width: 100%;
+.imageCropButtons {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap-reverse;
+  button {
+    margin: 8px 16px;
+    flex-grow: 1;
+  }
+}
+
+.cropper-area > * {
+  height: 100%;
+  width: auto;
+}
+
+button {
+  max-width: 600px;
+  margin: auto;
+}
+
+.whiteText {
+  color: white;
 }

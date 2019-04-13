@@ -20,7 +20,16 @@
     <span class="spacer"></span>
 
     <div *ngIf="(authService.currentUser$ | async) as user; else buttonCorner">
-      <img class="user-avatar mat-elevation-z2" src="{{ user.image || './../../../assets/images/man.png' }}" />
+      <img
+        class="user-avatar mat-elevation-z2"
+        [matMenuTriggerFor]="userMenu"
+        src="{{ user.image || './../../../assets/images/man.png' }}"
+      />
+
+      <mat-menu #userMenu="matMenu" [overlapTrigger]="false" xPosition="before">
+        <button mat-menu-item i18n="@@myFundsButtonText">My Funds</button>
+        <button mat-menu-item (click)="signOut()" i18n="@@signOutButtonText">Sign Out</button>
+      </mat-menu>
     </div>
 
     <ng-template #buttonCorner>

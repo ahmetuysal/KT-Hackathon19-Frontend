@@ -8,6 +8,8 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireStorageModule } from 'angularfire2/storage';
 
+import { ImageCropperModule } from 'ngx-image-cropper';
+
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
@@ -19,6 +21,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material';
 import { MatCardModule } from '@angular/material/card';
+import { MatMenuModule } from '@angular/material/menu';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -61,8 +64,10 @@ export function init_auth(authService: AuthService) {
     MatDatepickerModule,
     MatNativeDateModule,
     MatCardModule,
+    MatMenuModule,
     ReactiveFormsModule,
     HttpClientModule,
+    ImageCropperModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireStorageModule
   ],
