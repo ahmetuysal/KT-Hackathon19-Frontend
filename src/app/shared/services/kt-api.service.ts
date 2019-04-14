@@ -9,10 +9,14 @@ import { catchError } from 'rxjs/operators';
 })
 export class KtApiService {
   private base_url: String;
+  private redirect_url: String;
 
   constructor(private http: HttpClient) {
     this.base_url = environment.kt_api_base_url;
+    this.redirect_url = environment.kt_redirect_url;
   }
+
+  // https://idprep.kuveytturk.com.tr/api/connect/authorize?client_id=767cd0038db442528b076f01bd1aa1b3&scope=accounts&response_type=code&redirect_uri=&state=abc
 
   private setHeaders(): HttpHeaders {
     const headersConfig = {
