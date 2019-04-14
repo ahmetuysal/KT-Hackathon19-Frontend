@@ -4,18 +4,14 @@
       <img class="logo" src="../../assets/images/owl.png" alt="baykuslar" />
     </a>
 
-    <a mat-button class="navbar-hide-small" routerLink="route1" routerLinkActive="active" i18n="@@route1Text">
-      Route1
+    <a mat-button class="raiseFund-button navbar-hide-small" routerLink="create-equity-funding">
+      <mat-icon aria-label="Work icon">add_shopping_cart</mat-icon>
+      <span i18n="@@equityFundingText">Fund Your Company</span>
     </a>
-
-    <a mat-button class="navbar-hide-small" routerLink="route2" routerLinkActive="active" i18n="@@route2Text">
-      Route2
+    <a mat-button class="raiseFund-button navbar-hide-small" routerLink="create-fundraiser">
+      <mat-icon aria-label="Work icon">card_giftcard</mat-icon>
+      <span i18n="@@fundraiserText">Raise Fund</span>
     </a>
-
-    <a mat-button class="navbar-hide-small" routerLink="route3" routerLinkActive="active" i18n="@@route3Text">
-      Route3
-    </a>
-
     <!-- This fills the remaining space of the current row -->
     <span class="spacer"></span>
 
@@ -38,28 +34,16 @@
         ><span class="white-text" i18n="@@signUpButtonText">Sign Up</span></a
       >
     </ng-template>
-
-    <a mat-button class="raiseFund-button" routerLink="create-equity-funding">
-      <mat-icon aria-label="Work icon">add_shopping_cart</mat-icon>
-      <span class="navbar-hide-small" i18n="@@equityFundingText">Fund Your Company</span>
-    </a>
-    <a mat-button class="raiseFund-button" routerLink="create-fundraiser">
-      <mat-icon aria-label="Work icon">card_giftcard</mat-icon>
-      <span class="navbar-hide-small" i18n="@@fundraiserText">Raise Fund</span>
-    </a>
   </mat-toolbar-row>
 
   <mat-toolbar-row class="navbar-show-small second-row">
-    <a mat-button class="spacer" routerLink="route1" routerLinkActive="active" i18n="@@route1Text">
-      Route1
+    <a mat-button class="raiseFund-button spacer" routerLink="create-equity-funding">
+      <mat-icon aria-label="Work icon">add_shopping_cart</mat-icon>
+      <span i18n="@@equityFundingText">Fund Your Company</span>
     </a>
-
-    <a mat-button class="spacer" routerLink="route2" routerLinkActive="active" i18n="@@route2Text">
-      Route2
-    </a>
-
-    <a mat-button class="spacer" routerLink="route3" routerLinkActive="active" i18n="@@route3Text">
-      Route3
+    <a mat-button class="raiseFund-button spacer" routerLink="create-fundraiser">
+      <mat-icon aria-label="Work icon">card_giftcard</mat-icon>
+      <span i18n="@@fundraiserText">Raise Fund</span>
     </a>
   </mat-toolbar-row>
 </mat-toolbar>

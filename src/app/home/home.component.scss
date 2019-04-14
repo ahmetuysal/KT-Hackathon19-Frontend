@@ -12,3 +12,12 @@
     }
   }
 }
+
+@media (max-width: 598px) {
+  .container {
+    .flex-item {
+      max-width: 50%;
+      width: 45%;
+    }
+  }
+}
