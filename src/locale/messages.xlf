@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="route1Text" datatype="html">
+        <source>
+      Route1
+    </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/nav/nav.component.html</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/nav/nav.component.html</context>
+          <context context-type="linenumber">53</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="route2Text" datatype="html">
+        <source>
+      Route2
+    </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/nav/nav.component.html</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/nav/nav.component.html</context>
+          <context context-type="linenumber">57</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="route3Text" datatype="html">
+        <source>
+      Route3
+    </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/nav/nav.component.html</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/nav/nav.component.html</context>
+          <context context-type="linenumber">61</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="myFundsButtonText" datatype="html">
+        <source>My Funds</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/nav/nav.component.html</context>
+          <context context-type="linenumber">30</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="signOutButtonText" datatype="html">
+        <source>Sign Out</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/nav/nav.component.html</context>
+          <context context-type="linenumber">31</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="signInButtonText" datatype="html">
+        <source>Sign In</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/nav/nav.component.html</context>
+          <context context-type="linenumber">36</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="signUpButtonText" datatype="html">
+        <source>Sign Up</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/nav/nav.component.html</context>
+          <context context-type="linenumber">38</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="equityFundingText" datatype="html">
+        <source>Fund Your Company</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/nav/nav.component.html</context>
+          <context context-type="linenumber">44</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/create-equity-funding/create-equity-funding.component.html</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="fundraiserText" datatype="html">
+        <source>Raise Fund</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/nav/nav.component.html</context>
+          <context context-type="linenumber">48</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="fundraisingText" datatype="html">
+        <source>Fundraising</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/create-fundraising/create-fundraising.component.html</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="postFundraisingText" datatype="html">
+        <source>
+      List Your Fundraising
+    </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/create-fundraising/create-fundraising.component.html</context>
+          <context context-type="linenumber">73</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="postEquityText" datatype="html">
+        <source>
+      List Your Equity
+    </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/create-equity-funding/create-equity-funding.component.html</context>
+          <context context-type="linenumber">78</context>
+        </context-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
