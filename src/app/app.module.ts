@@ -33,6 +33,7 @@ import { SignupDialogComponent } from './signup-dialog/signup-dialog.component';
 import { AuthService } from './shared/services/auth.service';
 import { CreateFundraisingComponent } from './create-fundraising/create-fundraising.component';
 import { CreateEquityFundingComponent } from './create-equity-funding/create-equity-funding.component';
+import { PaymentDialogComponent } from './payment-dialog/payment-dialog.component';
 
 export function init_auth(authService: AuthService) {
   return () => authService.populate();
@@ -46,7 +47,8 @@ export function init_auth(authService: AuthService) {
     LoginDialogComponent,
     SignupDialogComponent,
     CreateFundraisingComponent,
-    CreateEquityFundingComponent
+    CreateEquityFundingComponent,
+    PaymentDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -71,7 +73,7 @@ export function init_auth(authService: AuthService) {
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireStorageModule
   ],
-  entryComponents: [LoginDialogComponent, SignupDialogComponent],
+  entryComponents: [LoginDialogComponent, SignupDialogComponent, PaymentDialogComponent],
   providers: [
     AuthService,
     { provide: APP_INITIALIZER, useFactory: init_auth, deps: [AuthService], multi: true },

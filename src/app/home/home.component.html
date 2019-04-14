@@ -25,7 +25,7 @@
       </mat-card-content>
       <mat-card-actions>
         <button mat-button>SHARE</button>
-        <button mat-button>FUND</button>
+        <button mat-button (click)="paymentClicked(item)">FUND</button>
       </mat-card-actions>
     </mat-card>
   </div>
@@ -52,7 +52,7 @@
       </mat-card-content>
       <mat-card-actions>
         <button mat-button>SHARE</button>
-        <button mat-button>BUY STOCK</button>
+        <button mat-button (click)="paymentClicked(item)">BUY STOCK</button>
       </mat-card-actions>
     </mat-card>
   </div>
