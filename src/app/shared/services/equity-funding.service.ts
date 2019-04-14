@@ -16,4 +16,13 @@ export class EquityFundingService {
       return false;
     }
   }
+
+  async getEquityFundingPosts(): Promise<EquityFundingPost[]> {
+    const result = await this.apiService.get('equity-funding-post').toPromise();
+
+    if (result.equityFundingPosts) {
+      return result.equityFundingPosts;
+    }
+    return null;
+  }
 }

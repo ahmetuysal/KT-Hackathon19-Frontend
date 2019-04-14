@@ -1,3 +1,59 @@
 <p>
   home works!
 </p>
+
+<h2>Fundraisers</h2>
+<div class="container">
+  <div *ngFor="let item of fundraiserPosts" class="flex-item">
+    <mat-card class="card">
+      <mat-card-header>
+        <mat-card-title>{{ item.title }}</mat-card-title>
+        <mat-card-subtitle>{{ item.targetIban }}</mat-card-subtitle>
+      </mat-card-header>
+      <img
+        mat-card-image
+        src="{{ item.image || 'https://sanitationsolutions.net/wp-content/uploads/2015/05/empty-image-300x200.png' }}"
+        alt="Photo of Fundraiser"
+      />
+      <h4>{{ item.fundedAmount / item.targetAmount }}% Funded</h4>
+      <mat-progress-bar mode="determinate" value="{{ item.fundedAmount / item.targetAmount }}"></mat-progress-bar>
+
+      <mat-card-content>
+        <p>
+          {{ item.description }}
+        </p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button>SHARE</button>
+        <button mat-button>FUND</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>
+<h2>Equity Funding</h2>
+<div class="container">
+  <div *ngFor="let item of equityFundingPosts" class="flex-item">
+    <mat-card class="card">
+      <mat-card-header>
+        <mat-card-title>{{ item.title }}</mat-card-title>
+      </mat-card-header>
+      <img
+        mat-card-image
+        src="{{ item.image || 'https://sanitationsolutions.net/wp-content/uploads/2015/05/empty-image-300x200.png' }}"
+        alt="Photo of Fundraiser"
+      />
+      <h4>{{ item.soldShare }}/{{ item.targetShare }} Shares Sold {{ item.sharePrice }} ₺/stock</h4>
+      <mat-progress-bar mode="determinate" value="{{ item.soldShare / item.targetShare }}"></mat-progress-bar>
+
+      <mat-card-content>
+        <p>
+          {{ item.description }}
+        </p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button>SHARE</button>
+        <button mat-button>BUY STOCK</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

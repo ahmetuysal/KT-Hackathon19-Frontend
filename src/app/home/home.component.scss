@@ -1,0 +1,14 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  flex-wrap: wrap;
+  .flex-item {
+    max-width: 30%;
+    margin: 10px;
+    width: 30%;
+    .card {
+      width: 90%;
+    }
+  }
+}

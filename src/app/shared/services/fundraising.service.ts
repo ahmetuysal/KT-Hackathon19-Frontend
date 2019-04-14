@@ -16,4 +16,13 @@ export class FundraisingService {
       return false;
     }
   }
+
+  async getFundraisingPosts(): Promise<FundraisingPost[]> {
+    const result = await this.apiService.get('fundraising-post').toPromise();
+
+    if (result.fundraisingPosts) {
+      return result.fundraisingPosts;
+    }
+    return null;
+  }
 }
