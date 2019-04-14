@@ -1,4 +1,56 @@
-<h1 mat-dialog-title>{{ post.title }} Ödeme Sayfası</h1>
+<h1 mat-dialog-title>
+  {{ post.title }}
+  <span *ngIf="isDonation; else paymentText">Bağış</span>
+  <ng-template #paymentText>Ödeme</ng-template>
+  Sayfası
+</h1>
 <div mat-dialog-content>
-  My favorite animal is:
+  <div class="content" *ngIf="!waiting; else payment">
+    <img
+      mat-card-image
+      src="{{ post.image || 'https://sanitationsolutions.net/wp-content/uploads/2015/05/empty-image-300x200.png' }}"
+      alt="Photo of Post"
+    />
+    <p>
+      {{ post.description }}
+    </p>
+    <div *ngIf="isDonation; else fundingTemplate">
+      <h4>{{ post.fundedAmount }}/{{ post.targetAmount }}₺ Funded</h4>
+      <mat-progress-bar
+        mode="determinate"
+        value="{{ (post.fundedAmount / post.targetAmount) * 100 }}"
+      ></mat-progress-bar>
+      <mat-form-field>
+        <input matInput placeholder="Bağış Miktarı" type="number" [formControl]="donationAmount" required />
+        <span matPrefix>₺&nbsp;</span>
+      </mat-form-field>
+    </div>
+    <ng-template #fundingTemplate>
+      <h4>{{ post.soldShare }}/{{ post.targetShare }} Hisse Satıldı</h4>
+      <mat-progress-bar mode="determinate" value="{{ (post.soldShare / post.targetShare) * 100 }}"></mat-progress-bar>
+      <h4>{{ post.sharePrice }}₺ hisse fiyatı</h4>
+      <mat-form-field>
+        <input matInput placeholder="Hisse Miktarı" type="number" [formControl]="stockAmount" required />
+      </mat-form-field>
+      <h4>{{ post.sharePrice * stockAmount.value }}₺ toplam ücret</h4>
+    </ng-template>
+
+    <mat-error *ngIf="errorMessage">{{ errorMessage }}</mat-error>
+    <mat-form-field>
+      <textarea matInput placeholder="Mesaj" [formControl]="message"></textarea>
+    </mat-form-field>
+  </div>
+
+  <ng-template #payment>
+    <h6>Ödeme Yapılıyor</h6>
+    <mat-progress-bar *ngIf="waiting" mode="indeterminate">Ödeme Yapılıyor</mat-progress-bar>
+  </ng-template>
 </div>
+
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Vazgeç</button>
+  <button type="submit" mat-button [disabled]="" (click)="onSubmit()">
+    <span *ngIf="isDonation; else paymentText">Bağış</span>
+    <ng-template #paymentText>Ödeme</ng-template> Yap
+  </button>
+</mat-dialog-actions>

@@ -2,7 +2,7 @@ import { User } from './user.model';
 
 export class EquityFundingPost {
   constructor(
-    public id?: string,
+    public id?: number,
     public userId?: string,
     public title?: string,
     public sharePrice?: number,

@@ -1,7 +1,3 @@
-<p>
-  home works!
-</p>
-
 <h2>Fundraisers</h2>
 <div class="container">
   <div *ngFor="let item of fundraiserPosts" class="flex-item">
@@ -15,8 +11,11 @@
         src="{{ item.image || 'https://sanitationsolutions.net/wp-content/uploads/2015/05/empty-image-300x200.png' }}"
         alt="Photo of Fundraiser"
       />
-      <h4>{{ item.fundedAmount / item.targetAmount }}% Funded</h4>
-      <mat-progress-bar mode="determinate" value="{{ item.fundedAmount / item.targetAmount }}"></mat-progress-bar>
+      <h4>{{ item.fundedAmount }}/{{ item.targetAmount }}₺ Funded</h4>
+      <mat-progress-bar
+        mode="determinate"
+        value="{{ (item.fundedAmount / item.targetAmount) * 100 }}"
+      ></mat-progress-bar>
 
       <mat-card-content>
         <p>
@@ -43,7 +42,7 @@
         alt="Photo of Fundraiser"
       />
       <h4>{{ item.soldShare }}/{{ item.targetShare }} Shares Sold {{ item.sharePrice }} ₺/stock</h4>
-      <mat-progress-bar mode="determinate" value="{{ item.soldShare / item.targetShare }}"></mat-progress-bar>
+      <mat-progress-bar mode="determinate" value="{{ (item.soldShare / item.targetShare) * 100 }}"></mat-progress-bar>
 
       <mat-card-content>
         <p>

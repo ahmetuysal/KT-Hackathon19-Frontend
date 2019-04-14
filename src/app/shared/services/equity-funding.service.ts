@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { EquityFundingPost } from '../models/equity-funding-post.model';
 import { ApiService } from './api.service';
+import { EquityFundingInvestment } from '../models/equity-funding-investment.model';
 
 @Injectable({
   providedIn: 'root'
@@ -24,5 +25,16 @@ export class EquityFundingService {
       return result.equityFundingPosts;
     }
     return null;
+  }
+
+  async postFundraisingDonation(investment: EquityFundingInvestment): Promise<boolean> {
+    const result = await this.apiService
+      .post('equity-funding-investments', { equityFundingInvestment: investment })
+      .toPromise();
+    if (result.StatusToken && result.StatusToken == 201) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }
