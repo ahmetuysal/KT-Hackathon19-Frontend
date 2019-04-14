@@ -18,13 +18,14 @@
       justify-content: center;
       min-width: 280px;
       width: 45%;
-      margin: auto;
+      overflow: hidden;
       image-cropper {
         flex-grow: 1;
       }
       img {
-        max-width: 100%;
-        height: auto;
+        max-height: 260px;
+        max-width: 90%;
+        object-fit: contain;
       }
     }
   }
@@ -38,11 +39,6 @@
     margin: 8px 16px;
     flex-grow: 1;
   }
-}
-
-.cropper-area > * {
-  height: 100%;
-  width: auto;
 }
 
 button {

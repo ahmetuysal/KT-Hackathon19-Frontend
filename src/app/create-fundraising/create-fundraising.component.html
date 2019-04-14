@@ -1,32 +1,82 @@
 <mat-card class="example-card">
-  <h1 mat-dialog-title>Crowd Funding</h1>
+  <mat-card-header>
+    <mat-card-title i18n="@@fundraisingText">Fundraising</mat-card-title>
+  </mat-card-header>
 
-  <div class="example-container">
-    <mat-form-field>
-      <input matInput placeholder="Title of the Fund" />
-    </mat-form-field>
+  <div class="container">
+    <div class="top-elements">
+      <div class="input-elements">
+        <mat-form-field>
+          <input matInput placeholder="Title of the Fund" [formControl]="title" required />
+        </mat-form-field>
 
+        <mat-form-field>
+          <input
+            matInput
+            placeholder="Target Amount"
+            type="number"
+            [formControl]="targetAmount"
+            required
+            class="example-left-align"
+          />
+          <span matPrefix>$&nbsp;</span>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <input matInput #postalCode maxlength="26" placeholder="Target Iban" [formControl]="targetIban" />
+          <mat-hint align="end"> {{ postalCode.value.length }} / 26</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [matDatepicker]="picker" placeholder="Deadline" required [value]="deadline.value" />
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div class="cropper-area">
+        <input hidden type="file" #uploader (change)="fileChangeEvent($event)" accept="image/*" />
+        <img
+          *ngIf="!showCropper; else cropperTemplate"
+          src="{{ croppedImage || 'https://images-na.ssl-images-amazon.com/images/I/51enUBAnxTL._AC_UL130_.jpg' }}"
+          (click)="uploader.click()"
+        />
+        <ng-template #cropperTemplate>
+          <image-cropper
+            [imageChangedEvent]="imageChangedEvent"
+            [maintainAspectRatio]="true"
+            [aspectRatio]="4 / 3"
+            [resizeToWidth]="540"
+            format="png"
+            (imageCropped)="imageCropped($event)"
+            (imageLoaded)="imageLoaded()"
+            (cropperReady)="cropperReady()"
+            (loadImageFailed)="loadImageFailed()"
+          ></image-cropper>
+          <div class="imageCropButtons">
+            <button mat-raised-button (click)="cancelClicked()">Cancel</button>
+            <button mat-raised-button class="whiteText" color="primary" (click)="doneClicked()">Done</button>
+          </div>
+        </ng-template>
+      </div>
+    </div>
     <mat-form-field>
       <textarea matInput placeholder="Description"></textarea>
     </mat-form-field>
 
-    <mat-form-field>
-      <input matInput placeholder="Image - SONRA DEĞİŞECEK" />
-    </mat-form-field>
+    <button
+      mat-raised-button
+      [disabled]="title.invalid || targetAmount.invalid || targetIban.invalid || deadline.invalid || waiting"
+      class="whiteText"
+      color="primary"
+      (click)="submit()"
+      i18n="@@postFundraisingText"
+    >
+      List Your Fundraising
+    </button>
 
-    <mat-form-field>
-      <input matInput placeholder="Target Amount" type="number" class="example-left-align" />
-      <span matPrefix>$&nbsp;</span>
-    </mat-form-field>
-
-    <mat-form-field>
-      <input matInput placeholder="Target Iban" />
-    </mat-form-field>
-
-    <mat-form-field>
-      <input matInput [matDatepicker]="picker" placeholder="Deadline" />
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field>
+    <div *ngIf="waiting">
+      <h6>Sending</h6>
+      <mat-progress-bar mode="indeterminate">Sending</mat-progress-bar>
+    </div>
   </div>
 </mat-card>
