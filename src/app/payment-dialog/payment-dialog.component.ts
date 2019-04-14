@@ -44,7 +44,8 @@ export class PaymentDialogComponent implements OnInit {
 
   async onSubmit() {
     this.waiting = true;
-    if (this.checkIsDonation) {
+
+    if (this.isDonation) {
       const donation = new FundraisingDonation();
       donation.amount = this.donationAmount.value;
       donation.date = new Date();
@@ -62,7 +63,7 @@ export class PaymentDialogComponent implements OnInit {
       investment.shareCount = this.stockAmount.value;
       investment.userId = this.authService.getCurrentUser().id;
       investment.message = this.message.value;
-      const result = await this.equityFundingService.postFundraisingDonation(investment);
+      const result = await this.equityFundingService.postEquityInvestment(investment);
       if (result) {
         (<EquityFundingPost>this.post).soldShare += this.stockAmount.value;
       }

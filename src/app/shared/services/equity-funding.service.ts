@@ -27,7 +27,7 @@ export class EquityFundingService {
     return null;
   }
 
-  async postFundraisingDonation(investment: EquityFundingInvestment): Promise<boolean> {
+  async postEquityInvestment(investment: EquityFundingInvestment): Promise<boolean> {
     const result = await this.apiService
       .post('equity-funding-investments', { equityFundingInvestment: investment })
       .toPromise();
