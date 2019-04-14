@@ -7,21 +7,35 @@
     <div class="top-elements">
       <div class="input-elements">
         <mat-form-field>
-          <input matInput placeholder="Title of the Fund" />
+          <input matInput placeholder="Title of the Fund" [formControl]="title" required />
         </mat-form-field>
 
         <mat-form-field>
-          <input matInput placeholder="Share Price" type="number" class="example-left-align" />
+          <input
+            matInput
+            placeholder="Share Price"
+            type="number"
+            [formControl]="sharePrice"
+            required
+            class="example-left-align"
+          />
           <span matPrefix>$&nbsp;</span>
         </mat-form-field>
 
         <mat-form-field>
-          <input matInput placeholder="Target Share" type="number" class="example-left-align" />
+          <input
+            matInput
+            placeholder="Target Share"
+            [formControl]="targetShare"
+            required
+            type="number"
+            class="example-left-align"
+          />
           <span matPrefix>$&nbsp;</span>
         </mat-form-field>
 
         <mat-form-field>
-          <input matInput [matDatepicker]="picker" placeholder="Deadline" />
+          <input matInput [matDatepicker]="picker" placeholder="Deadline" required [value]="deadline.value" />
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
@@ -30,7 +44,7 @@
         <input hidden type="file" #uploader (change)="fileChangeEvent($event)" accept="image/*" />
         <img
           *ngIf="!showCropper; else cropperTemplate"
-          src="{{ image || 'https://images-na.ssl-images-amazon.com/images/I/51enUBAnxTL._AC_UL130_.jpg' }}"
+          src="{{ croppedImage || 'https://images-na.ssl-images-amazon.com/images/I/51enUBAnxTL._AC_UL130_.jpg' }}"
           (click)="uploader.click()"
         />
         <ng-template #cropperTemplate>
@@ -38,7 +52,7 @@
             [imageChangedEvent]="imageChangedEvent"
             [maintainAspectRatio]="true"
             [aspectRatio]="4 / 3"
-            [resizeToWidth]="640"
+            [resizeToWidth]="540"
             format="png"
             (imageCropped)="imageCropped($event)"
             (imageLoaded)="imageLoaded()"
@@ -55,6 +69,20 @@
     <mat-form-field>
       <textarea matInput placeholder="Description"></textarea>
     </mat-form-field>
-    <button mat-raised-button class="whiteText" color="primary" i18n="@@postEquityText">List Your Equity</button>
+    <button
+      mat-raised-button
+      [disabled]="title.invalid || sharePrice.invalid || targetShare.invalid || deadline.invalid || waiting"
+      class="whiteText"
+      color="primary"
+      (click)="submit()"
+      i18n="@@postEquityText"
+    >
+      List Your Equity
+    </button>
+
+    <div *ngIf="waiting">
+      <h6>Sending</h6>
+      <mat-progress-bar mode="indeterminate">Sending</mat-progress-bar>
+    </div>
   </div>
 </mat-card>
